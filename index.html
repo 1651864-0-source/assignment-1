@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互動科學儀表板</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="main-column">
+            <nav class="main-nav">
+                <button class="nav-btn active" data-target="periodic-table-view">週期表</button>
+                <button class="nav-btn" data-target="calculator-view">物理計算機</button>
+            </nav>
+            <div class="main-content">
+                <div id="periodic-table-view" class="content-section active">
+                    <div id="table-controls">
+                        <div id="category-filters">
+                            <button data-category="all" class="active">顯示全部</button>
+                            <button data-category="alkali">鹼金屬</button>
+                            <button data-category="alkaline">鹼土金屬</button>
+                            <button data-category="lanthanide">鑭系元素</button>
+                            <button data-category="actinide">錒系元素</button>
+                            <button data-category="transition">過渡金屬</button>
+                            <button data-category="post-transition">其他金屬</button>
+                            <button data-category="metalloid">准金屬</button>
+                            <button data-category="nonmetal">其他非金屬</button>
+                            <button data-category="halogen">鹵素</button>
+                            <button data-category="noble">稀有氣體</button>
+                        </div>
+                        <div id="heatmap-control">
+                            <label for="heatmap-select">熱力圖:</label>
+                            <select id="heatmap-select">
+                                <option value="off">關閉</option>
+                                <option value="mass">相對原子質量</option>
+                                <option value="electronegativity">電負度</option>
+                                <option value="atomic_radius">原子半徑</option>
+                                <option value="melting_point">熔點</option>
+                                <option value="boiling_point">沸點</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="periodic-table">
+                        <!-- Elements will be dynamically inserted here by JavaScript -->
+                    </div>
+                </div>
+                <div id="calculator-view" class="content-section">
+                    <div id="physics-calculator">
+                        <div class="calculator-header">
+                            <h2>物理公式計算機</h2>
+                            <button id="export-calc-btn" class="export-btn">導出計算</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="formula-select">選擇公式:</label>
+                            <select id="formula-select">
+                                <option value="newton">牛頓第二定律 (F = ma)</option>
+                                <option value="ohm">歐姆定律 (V = IR)</option>
+                                <option value="idealGas">理想氣體方程式 (PV = nRT)</option>
+                            </select>
+                        </div>
+                        <div id="formula-display"></div>
+                        <div id="calculator-inputs"></div>
+                        <div id="calculator-result"></div>
+                        <div id="chart-container" style="display: none;">
+                            <canvas id="formula-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="resizer" class="resizer"></div>
+        <div id="details-panel">
+            <div class="details-header">
+                <h2 id="details-title">詳細資訊</h2>
+                <button id="export-element-btn" class="export-btn">導出筆記</button>
+            </div>
+            <div id="details-content">
+                <p>點擊一個元素來查看其屬性。</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
